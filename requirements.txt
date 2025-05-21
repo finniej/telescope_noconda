@@ -1,0 +1,13 @@
+Cython==3.0.12
+future==1.0.0+computecanada
+intervaltree==3.1.0+computecanada
+numpy==1.21.4+computecanada
+pandas==1.3.5+computecanada
+pysam==0.16.0.1+computecanada
+python-dateutil==2.9.0.post0+computecanada
+pytz==2025.2+computecanada
+PyYAML==5.4.1+computecanada
+scipy==1.7.3+computecanada
+six==1.17.0+computecanada
+sortedcontainers==2.4.0+computecanada
+-e git+https://github.com/mlbendall/telescope.git@4cf18595eea1702775e8a8bbc7b37ebac9233fd5#e>
