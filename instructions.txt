@@ -1,7 +1,8 @@
 # Use this file as your instructions, NOT a file to be directly implemented.
 # Create a directory for the telescope installation, and navigate to it.
 
-# Load python
+# Load StdEnv & python
+module load StdEnv/2020
 module load python/3.7.9
 
 # Clone the Telescope repository from GitHub
@@ -10,9 +11,10 @@ git clone https://github.com/mlbendall/telescope.git
 # Navigate into the project directory
 cd telescope
 
-#### Since you are working in the telescope github directory, Edit this file: telescope/utils/calignment.pyx 
+#### Since you are working in the telescope github directory, Edit line 2 of this file: telescope/utils/calignment.pyx 
 # Original: from calignment cimport AlignedPair 
 # New: from .calignment cimport AlignedPair
+nano telescope/utils/calignment.pyx
 
 # Create a new virtual environment with Python 3.9
 python -m venv telescope-env-py39
@@ -20,13 +22,15 @@ python -m venv telescope-env-py39
 # Activate the virtual environment
 source telescope-env-py39/bin/activate
 
-# Install cython
+# Install dependencies
 pip install cython
+pip install pysam==0.16.0.1
+module load htslib/1.9
 
 # Install telescope
 pip install -e .		# use -e for edit mode, allows cythons to properly parse files
 
-# Check error codes. Mine threw pandas error when trying to run, so install pandas
+# Install pandas
 pip install pandas
 
 # test the program
