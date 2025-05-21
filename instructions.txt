@@ -1,0 +1,39 @@
+# Use this file as your instructions, NOT a file to be directly implemented.
+# Create a directory for the telescope installation, and navigate to it.
+
+# Load python
+Module load python/3.7.9
+
+# Clone the Telescope repository from GitHub
+git clone https://github.com/mlbendall/telescope.git
+
+# Navigate into the project directory
+cd telescope
+
+#### Since you are working in the telescope github directory, Edit this file: telescope/utils/calignment.pyx 
+# Original: from calignment cimport AlignedPair 
+# New: from .calignment cimport AlignedPair
+
+# Create a new virtual environment with Python 3.9
+python -m venv telescope-env-py39
+
+# Activate the virtual environment
+source telescope-env-py39/bin/activate
+
+# Install cython
+pip install cython
+
+# Install telescope
+pip install -e .		# use -e for edit mode, allows cythons to properly parse files
+
+# Check error codes. Mine threw pandas error when trying to run, so install pandas
+pip install pandas
+
+# test the program
+telescope assign telescope/data/alignment.bam telescope/data/annotation.gtf
+
+# if it works, make requirements.txt file to make sure the dependencies are saved (just in case)
+pip freeze –local > requirements.txt
+
+# leave VENV
+deactivate
